@@ -37,7 +37,6 @@ class Bullet(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=pos)
         self.pos = pygame.math.Vector2(pos)
 
-        # ✅ FIX: bullet ignores ship velocity
         self.vel = pygame.math.Vector2(0, -18).rotate(-angle)
 
         self.owner = owner
@@ -90,6 +89,7 @@ class Ship(pygame.sprite.Sprite):
         # Hard boundaries
         if self.pos.x < BOUNDARY_PADDING:
             self.pos.x = BOUNDARY_PADDING
+
             self.vel.x = 0
         elif self.pos.x > SCREEN_WIDTH - BOUNDARY_PADDING:
             self.pos.x = SCREEN_WIDTH - BOUNDARY_PADDING
